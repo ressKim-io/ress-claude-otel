@@ -1,8 +1,24 @@
+# Environment
 .env
 .env.local
+
+# OS
 .DS_Store
+
+# Docker volumes
 prometheus_data/
 grafana_data/
 loki_data/
+
+# Temp
 tmp/
 *.log
+
+# Claude Code
+.claude/
+
+# Node (screenshot 등 임시 작업)
+node_modules/
+package.json
+package-lock.json
+test-results/
