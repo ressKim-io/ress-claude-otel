@@ -26,11 +26,11 @@
       "gridPos": { "h": 4, "w": 6, "x": 0, "y": 1 },
       "id": 1,
       "options": { "colorMode": "value", "graphMode": "area", "reduceOptions": { "calcs": ["lastNotNull"] } },
-      "title": "Active Sessions (1h)",
+      "title": "Sessions",
       "type": "stat",
       "targets": [
         {
-          "expr": "count(count by (session_id) (claude_code_cost_usage_USD_total))",
+          "expr": "count(count by (session_id) (max_over_time(claude_code_cost_usage_USD_total[$__range])))",
           "legendFormat": "Sessions"
         }
       ]
@@ -52,7 +52,7 @@
       "type": "stat",
       "targets": [
         {
-          "expr": "sum(claude_code_cost_usage_USD_total)",
+          "expr": "sum(max_over_time(claude_code_cost_usage_USD_total[$__range]))",
           "legendFormat": "Cost"
         }
       ]
@@ -74,7 +74,7 @@
       "type": "stat",
       "targets": [
         {
-          "expr": "sum(claude_code_token_usage_tokens_total)",
+          "expr": "sum(max_over_time(claude_code_token_usage_tokens_total[$__range]))",
           "legendFormat": "Tokens"
         }
       ]
@@ -96,7 +96,7 @@
       "type": "stat",
       "targets": [
         {
-          "expr": "sum(claude_code_lines_of_code_count_total)",
+          "expr": "sum(max_over_time(claude_code_lines_of_code_count_total[$__range]))",
           "legendFormat": "Lines"
         }
       ]
@@ -125,7 +125,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "sum by (model) (claude_code_cost_usage_USD_total)",
+          "expr": "sum by (model) (max_over_time(claude_code_cost_usage_USD_total[$__interval]))",
           "legendFormat": "{{model}}"
         }
       ]
@@ -143,12 +143,12 @@
       },
       "gridPos": { "h": 8, "w": 12, "x": 12, "y": 6 },
       "id": 6,
-      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["sum"] }, "tooltip": { "mode": "multi" } },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
       "title": "Cumulative Token Usage by Type",
       "type": "timeseries",
       "targets": [
         {
-          "expr": "sum by (type) (claude_code_token_usage_tokens_total)",
+          "expr": "sum by (type) (max_over_time(claude_code_token_usage_tokens_total[$__interval]))",
           "legendFormat": "{{type}}"
         }
       ]
@@ -165,12 +165,12 @@
       },
       "gridPos": { "h": 8, "w": 24, "x": 0, "y": 14 },
       "id": 7,
-      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["sum"] }, "tooltip": { "mode": "multi" } },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
       "title": "Cumulative Token Usage by Model",
       "type": "timeseries",
       "targets": [
         {
-          "expr": "sum by (model) (claude_code_token_usage_tokens_total)",
+          "expr": "sum by (model) (max_over_time(claude_code_token_usage_tokens_total[$__interval]))",
           "legendFormat": "{{model}}"
         }
       ]
@@ -308,7 +308,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "sum by (type) (claude_code_lines_of_code_count_total)",
+          "expr": "sum by (type) (max_over_time(claude_code_lines_of_code_count_total[$__interval]))",
           "legendFormat": "{{type}}"
         }
       ]
@@ -329,11 +329,11 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "sum(claude_code_commit_count_total)",
+          "expr": "sum(max_over_time(claude_code_commit_count_total[$__interval]))",
           "legendFormat": "Commits"
         },
         {
-          "expr": "sum(claude_code_pull_request_count_total)",
+          "expr": "sum(max_over_time(claude_code_pull_request_count_total[$__interval]))",
           "legendFormat": "Pull Requests"
         }
       ]
