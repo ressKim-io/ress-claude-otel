@@ -1,0 +1,8 @@
+.env
+.env.local
+.DS_Store
+prometheus_data/
+grafana_data/
+loki_data/
+tmp/
+*.log
