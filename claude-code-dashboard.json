@@ -120,7 +120,7 @@
       },
       "gridPos": { "h": 8, "w": 12, "x": 0, "y": 6 },
       "id": 5,
-      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["sum"] }, "tooltip": { "mode": "multi" } },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
       "title": "Cumulative Cost by Model",
       "type": "timeseries",
       "targets": [
@@ -213,7 +213,7 @@
       },
       "gridPos": { "h": 8, "w": 12, "x": 12, "y": 23 },
       "id": 9,
-      "options": { "legend": { "displayMode": "table", "placement": "right", "calcs": ["sum"] } },
+      "options": { "legend": { "displayMode": "table", "placement": "right", "calcs": ["lastNotNull"] } },
       "title": "Cumulative Tool Usage",
       "type": "timeseries",
       "targets": [
@@ -303,7 +303,7 @@
       },
       "gridPos": { "h": 8, "w": 12, "x": 0, "y": 49 },
       "id": 13,
-      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["sum"] }, "tooltip": { "mode": "multi" } },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
       "title": "Cumulative Code Changes",
       "type": "timeseries",
       "targets": [
@@ -324,7 +324,7 @@
       },
       "gridPos": { "h": 8, "w": 12, "x": 12, "y": 49 },
       "id": 14,
-      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["sum"] }, "tooltip": { "mode": "multi" } },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } },
       "title": "Development Activity",
       "type": "timeseries",
       "targets": [
