@@ -125,7 +125,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "sum by (model) (max_over_time(claude_code_cost_usage_USD_total[$__interval]))",
+          "expr": "sum by (model) (max_over_time(claude_code_cost_usage_USD_total[$__range]))",
           "legendFormat": "{{model}}"
         }
       ]
@@ -148,7 +148,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "sum by (type) (max_over_time(claude_code_token_usage_tokens_total[$__interval]))",
+          "expr": "sum by (type) (max_over_time(claude_code_token_usage_tokens_total[$__range]))",
           "legendFormat": "{{type}}"
         }
       ]
@@ -170,7 +170,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "sum by (model) (max_over_time(claude_code_token_usage_tokens_total[$__interval]))",
+          "expr": "sum by (model) (max_over_time(claude_code_token_usage_tokens_total[$__range]))",
           "legendFormat": "{{model}}"
         }
       ]
@@ -308,7 +308,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "sum by (type) (max_over_time(claude_code_lines_of_code_count_total[$__interval]))",
+          "expr": "sum by (type) (max_over_time(claude_code_lines_of_code_count_total[$__range]))",
           "legendFormat": "{{type}}"
         }
       ]
@@ -329,11 +329,11 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "sum(max_over_time(claude_code_commit_count_total[$__interval]))",
+          "expr": "sum(max_over_time(claude_code_commit_count_total[$__range]))",
           "legendFormat": "Commits"
         },
         {
-          "expr": "sum(max_over_time(claude_code_pull_request_count_total[$__interval]))",
+          "expr": "sum(max_over_time(claude_code_pull_request_count_total[$__range]))",
           "legendFormat": "Pull Requests"
         }
       ]
