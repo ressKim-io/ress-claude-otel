@@ -56,6 +56,7 @@ export OTEL_EXPORTER_OTLP_PROTOCOL=grpc
 export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:14317
 export OTEL_METRIC_EXPORT_INTERVAL=10000
 export OTEL_LOGS_EXPORT_INTERVAL=5000
+export OTEL_LOG_TOOL_DETAILS=1
 ```
 
 또는 `source setup-env.sh`로 현재 세션에만 적용 가능.
@@ -67,7 +68,11 @@ Grafana:    http://localhost:13000  (admin / admin)
 Prometheus: http://localhost:19090
 ```
 
-## Dashboard Panels
+## Dashboards
+
+두 개의 대시보드가 자동 프로비저닝됨:
+
+### 1. Claude Code Observability (`claude-code-dashboard.json`)
 
 | Section | Panels |
 |---------|--------|
@@ -77,6 +82,17 @@ Prometheus: http://localhost:19090
 | Performance | API Request Duration by Model, API Error Rate |
 | Productivity | Cumulative Code Changes, Development Activity |
 | Event Logs | Tool Execution Events, API Error Events |
+
+### 2. Claude Code: Skills, Commands & Plugins (`claude-code-skills-dashboard.json`)
+
+| Section | Panels |
+|---------|--------|
+| Skill Overview | Total Activations, Unique Skills, Plugin-sourced %, Slash Command Invocations |
+| Skill Breakdown | Top Skills, Trigger Distribution, Skill Source Distribution |
+| Skill Activity Over Time | Activations Over Time (stacked by skill) |
+| Slash Commands | Top Slash Commands, Command Source Distribution |
+| Plugins | Plugin Installations, Install Trigger (cli vs ui) |
+| Activity Logs | Recent Skill Activations |
 
 ## Collected Metrics
 
@@ -97,7 +113,9 @@ Prometheus: http://localhost:19090
 | `claude_code.tool_result` | 도구 실행 결과 (이름, 성공여부, 소요시간) |
 | `claude_code.api_request` | API 요청 (모델, 비용, 토큰, 응답시간) |
 | `claude_code.api_error` | API 에러 (상태코드, 에러메시지) |
-| `claude_code.user_prompt` | 사용자 프롬프트 (길이만, 내용은 기본 비활성) |
+| `claude_code.user_prompt` | 사용자 프롬프트 (길이, `command_name`, `command_source` 포함) |
+| `claude_code.skill_activated` | Skill 호출 (`skill_name`, `invocation_trigger`, `skill_source`) |
+| `claude_code.plugin_installed` | 플러그인 설치 (`plugin_name`, `marketplace_name`, `install_trigger`) |
 
 ## Make Commands
 

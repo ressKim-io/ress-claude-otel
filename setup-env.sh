@@ -19,6 +19,10 @@ export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:14317
 export OTEL_METRIC_EXPORT_INTERVAL=10000
 export OTEL_LOGS_EXPORT_INTERVAL=5000
 
+# Skill / Bash / MCP 등 도구 상세 정보 기록
+# (사용자 정의 skill 이름이 'custom_skill' 플레이스홀더 대신 실제 이름으로 노출됨)
+export OTEL_LOG_TOOL_DETAILS=1
+
 echo "Claude Code OTel 텔레메트리 설정 완료"
 echo ""
 echo "  CLAUDE_CODE_ENABLE_TELEMETRY = $CLAUDE_CODE_ENABLE_TELEMETRY"
@@ -28,6 +32,7 @@ echo "  OTEL_EXPORTER_OTLP_PROTOCOL  = $OTEL_EXPORTER_OTLP_PROTOCOL"
 echo "  OTEL_EXPORTER_OTLP_ENDPOINT  = $OTEL_EXPORTER_OTLP_ENDPOINT"
 echo "  OTEL_METRIC_EXPORT_INTERVAL  = ${OTEL_METRIC_EXPORT_INTERVAL}ms"
 echo "  OTEL_LOGS_EXPORT_INTERVAL    = ${OTEL_LOGS_EXPORT_INTERVAL}ms"
+echo "  OTEL_LOG_TOOL_DETAILS        = $OTEL_LOG_TOOL_DETAILS"
 echo ""
 echo "Grafana:    http://localhost:13000  (admin / admin)"
 echo "Prometheus: http://localhost:19090"
