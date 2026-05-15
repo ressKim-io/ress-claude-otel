@@ -4,7 +4,7 @@ networks:
 
 services:
   otel-collector:
-    image: otel/opentelemetry-collector-contrib:latest
+    image: otel/opentelemetry-collector-contrib:0.152.0
     container_name: claude-otel-collector
     command: ["--config=/etc/otel/collector-config.yaml"]
     volumes:
@@ -18,7 +18,7 @@ services:
       - otel-network
 
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus:v3.11.3
     container_name: claude-prometheus
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
@@ -32,7 +32,7 @@ services:
       - otel-network
 
   loki:
-    image: grafana/loki:latest
+    image: grafana/loki:3.7.2
     container_name: claude-loki
     ports:
       - "13100:3100"
@@ -44,7 +44,7 @@ services:
       - otel-network
 
   grafana:
-    image: grafana/grafana-oss:latest
+    image: grafana/grafana-oss:13.0.1
     container_name: claude-grafana
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
